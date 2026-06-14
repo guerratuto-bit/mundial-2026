@@ -40,10 +40,9 @@
 
         <div class="search-box">
             <h3>🔍 Buscador Inteligente</h3>
-            <input type="text" id="searchInput" placeholder="Ej: Paraguay, Argentina, Brasil..." onkeyup="buscarPais()">
+            <input type="text" id="searchInput" placeholder="Ej: Paraguay, Argentina..." onkeyup="buscarPais()">
         </div>
 
-        <!-- DASHBOARD DINÁMICO DEL PAÍS -->
         <div id="dashboard-pais">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2 id="db-nombre" style="margin: 0; color: #1a1a1a; font-size: 28px;">País</h2>
@@ -51,34 +50,29 @@
             </div>
             
             <div class="dashboard-grid">
-                <!-- Tarjeta: Último Partido -->
                 <div class="card" style="border-left: 4px solid #28a745;">
                     <h4>🔙 Partido Reciente</h4>
                     <p id="db-reciente" style="font-size: 18px; font-weight: bold; margin: 10px 0;">Cargando...</p>
                     <p id="db-historial" style="font-size: 13px; color: #666; margin: 0;">Cargando historial...</p>
                 </div>
 
-                <!-- Tarjeta: Próximo Partido -->
                 <div class="card" style="border-left: 4px solid #e3000f;">
                     <h4>🔜 Próximo Desafío</h4>
                     <p id="db-proximo" style="font-weight: bold; margin: 10px 0;">Cargando...</p>
                     <p id="db-tv" style="font-size: 13px; color: #e3000f; margin: 0;">📺 Transmisión: Cargando...</p>
                 </div>
 
-                <!-- Tarjeta: Estado del Plantel -->
                 <div class="card" style="border-left: 4px solid #ffc107;">
                     <h4>🚑 Estado del Plantel</h4>
                     <p id="db-novedades" style="font-size: 14px; margin: 10px 0;">Cargando...</p>
                 </div>
 
-                <!-- Tarjeta: Tabla del Grupo -->
                 <div class="card" style="grid-column: 1 / -1;">
                     <h4>📊 Posiciones del Grupo</h4>
                     <table>
                         <thead><tr><th>Selección</th><th>Pts</th><th>PJ</th><th>DIF</th></tr></thead>
                         <tbody id="db-tabla-grupo">
-                            <!-- Se llena con JS -->
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>
@@ -95,34 +89,34 @@
             }
         }
 
-        // BASE DE DATOS ESTRUCTURADA (Simulando respuesta de API)
+        // BASE DE DATOS REAL (Actualizada con tus capturas de pantalla)
         const apiData = {
             "paraguay": {
                 grupo: "Grupo D",
-                reciente: "Paraguay 2 - 1 EEUU",
-                historial: "Goles: Almirón (34'), Enciso (78') | Pulisic (12'). Posesión: 45% - 55%.",
-                proximo: "Paraguay vs. Japón | 18 Jun - 16:00 hs",
+                reciente: "Estados Unidos 4 - 1 Paraguay",
+                historial: "Partido jugado el Viernes 12/6.",
+                proximo: "Turquía vs. Paraguay | Sáb, 20/6 - 12:00 a.m.",
                 tv: "Telefuturo, SNT, Tigo Sports",
-                novedades: "🟨 Gómez (Apercibido). ✅ Resto del plantel al 100%.",
+                novedades: "Obligados a sumar de a tres en la próxima fecha para seguir con vida.",
                 tabla: [
-                    { equipo: "Paraguay", pts: 3, pj: 1, dif: "+1" },
-                    { equipo: "Japón", pts: 1, pj: 1, dif: "0" },
-                    { equipo: "Senegal", pts: 1, pj: 1, dif: "0" },
-                    { equipo: "EEUU", pts: 0, pj: 1, dif: "-1" }
+                    { equipo: "Estados Unidos", pts: 3, pj: 1, dif: "+3" },
+                    { equipo: "Australia", pts: 3, pj: 1, dif: "+2" },
+                    { equipo: "Turquía", pts: 0, pj: 1, dif: "-2" },
+                    { equipo: "Paraguay", pts: 0, pj: 1, dif: "-3" }
                 ]
             },
             "argentina": {
-                grupo: "Grupo A",
-                reciente: "Argentina 3 - 0 Canadá",
-                historial: "Goles: Messi (2), Álvarez (1). Dominio total del medio campo.",
-                proximo: "Argentina vs. Marruecos | 17 Jun - 18:00 hs",
-                tv: "TyC Sports, TV Pública",
-                novedades: "✅ Sin lesionados ni suspendidos.",
+                grupo: "Grupo J",
+                reciente: "Amistosos: ARG 3-0 ISL / ARG 5-0 ZAM",
+                historial: "Preparación finalizada. Aún no debutan en la fase de grupos.",
+                proximo: "Argentina vs. Argelia | Mar, 16/6 - 10:00 p.m.",
+                tv: "TyC Sports, TV Pública, Telefe",
+                novedades: "Equipo listo para el debut oficial en el Mundial.",
                 tabla: [
-                    { equipo: "Argentina", pts: 3, pj: 1, dif: "+3" },
-                    { equipo: "Marruecos", pts: 1, pj: 1, dif: "0" },
-                    { equipo: "Rumania", pts: 1, pj: 1, dif: "0" },
-                    { equipo: "Canadá", pts: 0, pj: 1, dif: "-3" }
+                    { equipo: "Argentina", pts: 0, pj: 0, dif: "0" },
+                    { equipo: "Argelia", pts: 0, pj: 0, dif: "0" },
+                    { equipo: "Austria", pts: 0, pj: 0, dif: "0" },
+                    { equipo: "Jordania", pts: 0, pj: 0, dif: "0" }
                 ]
             }
         };
