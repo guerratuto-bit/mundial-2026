@@ -25,6 +25,7 @@
     <h1 id="dynamic-title">⚽ Guía de Transmisión: Mundial 2026</h1>
     <p id="loading">Adaptando los horarios a tu zona local...</p>
 
+    <!-- ANUNCIO 1 -->
     <div class="ad-space"><script>(function(s){s.dataset.zone='11148195',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script></div>
 
     <div class="table-container">
@@ -43,10 +44,61 @@
         </table>
     </div>
 
+    <!-- ANUNCIO 2 -->
     <div class="ad-space"><script>(function(s){s.dataset.zone='11148195',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script></div>
 
+    <!-- FASE 2: Simulador de Grupos -->
+    <div style="margin-top: 40px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; color: #004b87;">🧮 Simulador de Clasificación</h2>
+        <p style="text-align: center; font-size: 14px; color: #666;">Juega con los resultados y descubre quién suma puntos en la fase de grupos.</p>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+            <!-- Zona de Partidos -->
+            <div style="flex: 1; min-width: 250px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <h3 style="font-size: 16px; margin-top: 0; text-align: center;">Ingresa los resultados:</h3>
+                
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
+                    <span style="font-weight: bold; width: 30%; font-size: 14px;">Tu Selección</span>
+                    <input type="number" id="goles-local" value="0" min="0" style="width: 45px; text-align: center; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; padding: 5px;">
+                    <span style="font-weight: bold; color: #666;">vs</span>
+                    <input type="number" id="goles-visitante" value="0" min="0" style="width: 45px; text-align: center; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; padding: 5px;">
+                    <span style="font-weight: bold; width: 30%; text-align: right; font-size: 14px;">Rival</span>
+                </div>
+                
+                <button onclick="simularResultado()" style="width: 100%; padding: 12px; background: #e3000f; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Simular Tabla 📊</button>
+            </div>
+            
+            <!-- Zona de Tabla -->
+            <div style="flex: 1; min-width: 250px;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 14px;">
+                    <tr style="background: #004b87; color: white;">
+                        <th style="padding: 10px;">Equipo</th>
+                        <th style="padding: 10px;">Pts</th>
+                        <th style="padding: 10px;">GF</th>
+                        <th style="padding: 10px;">GC</th>
+                    </tr>
+                    <tbody id="tabla-simulada" style="transition: background-color 0.5s;">
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Tu Selección</strong></td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;" id="pts-local">0</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;" id="gf-local">0</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;" id="gc-local">0</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Rival</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;" id="pts-visitante">0</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;" id="gf-visitante">0</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;" id="gc-visitante">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script General Unificado -->
     <script>
-        // Datos reales del Mundial: 14 y 15 de Junio 2026 (Horarios en formato UTC-4 / ET)
+        // Datos reales del Mundial: 14 y 15 de Junio 2026
         const matches = [
             { date: '2026-06-14T13:00:00-04:00', teams: 'Alemania vs. Curaçao', channels: 'DSports / FIFA+' },
             { date: '2026-06-14T16:00:00-04:00', teams: 'Países Bajos vs. Japón', channels: 'DSports / FIFA+' },
@@ -58,24 +110,44 @@
             { date: '2026-06-15T21:00:00-04:00', teams: 'Irán vs. Nueva Zelanda', channels: 'DSports / FIFA+' }
         ];
 
+        // Lógica de la calculadora
+        function simularResultado() {
+            let golesL = parseInt(document.getElementById('goles-local').value) || 0;
+            let golesV = parseInt(document.getElementById('goles-visitante').value) || 0;
+            let ptsL = 0, ptsV = 0;
+            
+            if (golesL > golesV) { ptsL = 3; } 
+            else if (golesL < golesV) { ptsV = 3; } 
+            else { ptsL = 1; ptsV = 1; }
+            
+            document.getElementById('pts-local').innerText = ptsL;
+            document.getElementById('gf-local').innerText = golesL;
+            document.getElementById('gc-local').innerText = golesV;
+            
+            document.getElementById('pts-visitante').innerText = ptsV;
+            document.getElementById('gf-visitante').innerText = golesV;
+            document.getElementById('gc-visitante').innerText = golesL;
+            
+            let tabla = document.getElementById('tabla-simulada');
+            tabla.style.backgroundColor = '#e8f5e9';
+            setTimeout(() => tabla.style.backgroundColor = 'transparent', 600);
+        }
+
+        // Lógica de los horarios
         async function initGlobalSite() {
             try {
-                // 1. Detectar país del usuario (API Gratuita)
                 const response = await fetch('https://ipapi.co/json/');
                 const data = await response.json();
                 const country = data.country_name || 'tu país';
                 
-                // 2. Personalizar la web
                 document.getElementById('dynamic-title').innerText = `⚽ Dónde ver el Mundial 2026 en ${country}`;
                 document.title = `Dónde ver el Mundial 2026 en ${country} | Horarios`;
                 document.getElementById('loading').style.display = 'none';
 
-                // 3. Renderizar tabla con la hora exacta del celular del usuario
                 const tbody = document.getElementById('match-data');
                 matches.forEach(match => {
                     const matchDate = new Date(match.date);
                     
-                    // Magia de JS: Convierte la hora automáticamente
                     const localTime = new Intl.DateTimeFormat('es-ES', { 
                         hour: '2-digit', minute: '2-digit', timeZoneName: 'short' 
                     }).format(matchDate);
@@ -98,7 +170,6 @@
             }
         }
 
-        // Arrancar la magia al abrir la página
         window.onload = initGlobalSite;
     </script>
 </body>
