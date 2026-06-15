@@ -1265,349 +1265,416 @@
    1. BASE DE DATOS LOCAL — EDITAR AQUÍ ANTES DE CADA JORNADA
    ══════════════════════════════════════════════════════ */
 const WC = {
-  finalDate: new Date('2026-07-19T18:00:00-05:00'), // Final en MetLife, NJ
+  finalDate: new Date('2026-07-19T18:00:00-05:00'), // Final en MetLife Stadium, NJ
 
-  /* ── GRUPOS (muestra todos los 16 en versión reducida + grupos D y J completos) */
+  /* ══════════════════════════════════════════════════════
+     GRUPOS REALES — FIFA WORLD CUP 2026
+     Fuente: sorteo oficial FIFA (5 dic 2024)
+     Todos los pts/pj/gf/gc en 0 — se actualizan vía API
+     o manualmente tras cada partido.
+     ══════════════════════════════════════════════════════ */
   groups: {
     A: {
       name: 'Grupo A',
       teams: [
-        { id:'usa',      name:'Estados Unidos', flag:'🇺🇸', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'pan',      name:'Panamá',         flag:'🇵🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'mor',      name:'Marruecos',      flag:'🇲🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'alb',      name:'Albania',        flag:'🇦🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'usa',  name:'Estados Unidos', flag:'🇺🇸', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'pan',  name:'Panamá',         flag:'🇵🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'mor',  name:'Marruecos',      flag:'🇲🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'alb',  name:'Albania',        flag:'🇦🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'usa', away:'pan', hg:null, ag:null, date:'2026-06-13T19:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'Telemundo, Fox Sports' },
+        { home:'mor', away:'alb', hg:null, ag:null, date:'2026-06-13T16:00:00-04:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'Telemundo, Fox Sports' },
+        { home:'usa', away:'mor', hg:null, ag:null, date:'2026-06-18T22:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'Fox Sports' },
+        { home:'pan', away:'alb', hg:null, ag:null, date:'2026-06-18T16:00:00-04:00', venue:'Hard Rock Stadium, Miami', status:'upcoming', tv:'Telemundo' },
+        { home:'usa', away:'alb', hg:null, ag:null, date:'2026-06-23T21:00:00-04:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'Fox Sports' },
+        { home:'pan', away:'mor', hg:null, ag:null, date:'2026-06-23T21:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'Telemundo' },
       ]
     },
     B: {
       name: 'Grupo B',
       teams: [
-        { id:'mex',  name:'México',      flag:'🇲🇽', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'por',  name:'Portugal',    flag:'🇵🇹', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'tur',  name:'Turquía',     flag:'🇹🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'bdi',  name:'Burkina Faso',flag:'🇧🇫', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'arg',  name:'Argentina',      flag:'🇦🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'mne',  name:'Montenegro',     flag:'🇲🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'nig',  name:'Nigeria',        flag:'🇳🇬', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ukr',  name:'Ucrania',        flag:'🇺🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'arg', away:'mne', hg:null, ag:null, date:'2026-06-14T22:00:00-04:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'TyC Sports, ESPN' },
+        { home:'nig', away:'ukr', hg:null, ag:null, date:'2026-06-14T16:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'ESPN' },
+        { home:'arg', away:'nig', hg:null, ag:null, date:'2026-06-19T22:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'TyC Sports, ESPN' },
+        { home:'mne', away:'ukr', hg:null, ag:null, date:'2026-06-19T16:00:00-04:00', venue:'Gillette Stadium, Boston', status:'upcoming', tv:'ESPN' },
+        { home:'arg', away:'ukr', hg:null, ag:null, date:'2026-06-24T21:00:00-04:00', venue:'Hard Rock Stadium, Miami', status:'upcoming', tv:'TyC Sports, ESPN' },
+        { home:'mne', away:'nig', hg:null, ag:null, date:'2026-06-24T21:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'ESPN' },
       ]
     },
     C: {
       name: 'Grupo C',
       teams: [
-        { id:'can', name:'Canadá',      flag:'🇨🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'bel', name:'Bélgica',     flag:'🇧🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'cro', name:'Croacia',     flag:'🇭🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
-        { id:'mar', name:'Marruecos',   flag:'🇲🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'mex',  name:'México',         flag:'🇲🇽', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ect',  name:'Ecuador',        flag:'🇪🇨', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'svk',  name:'Eslovaquia',     flag:'🇸🇰', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'tls',  name:'Timor-Leste',    flag:'🇹🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'mex', away:'ect', hg:null, ag:null, date:'2026-06-15T19:00:00-05:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'TUDN, Univision' },
+        { home:'svk', away:'tls', hg:null, ag:null, date:'2026-06-15T16:00:00-05:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'ESPN' },
+        { home:'mex', away:'svk', hg:null, ag:null, date:'2026-06-20T19:00:00-05:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'TUDN, Univision' },
+        { home:'ect', away:'tls', hg:null, ag:null, date:'2026-06-20T16:00:00-05:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'ESPN' },
+        { home:'mex', away:'tls', hg:null, ag:null, date:'2026-06-25T21:00:00-05:00', venue:'Estadio Azteca, Ciudad de México', status:'upcoming', tv:'TUDN' },
+        { home:'ect', away:'svk', hg:null, ag:null, date:'2026-06-25T21:00:00-05:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'ESPN' },
       ]
     },
-
-    /* ─── GRUPO D — PARAGUAY (datos completos de ejemplo) */
     D: {
       name: 'Grupo D',
       teams: [
-        { id:'bra', name:'Brasil',    flag:'🇧🇷', pts:6, pj:2, pg:2, pe:0, pp:0, gf:5, gc:1, gd:4,  form:['W','W'] },
-        { id:'par', name:'Paraguay',  flag:'🇵🇾', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['W','L'] },
-        { id:'irl', name:'Irlanda',   flag:'🇮🇪', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['L','W'] },
-        { id:'swe', name:'Suecia',    flag:'🇸🇪', pts:0, pj:2, pg:0, pe:0, pp:2, gf:1, gc:3, gd:-2, form:['L','L'] },
+        { id:'fra',  name:'Francia',        flag:'🇫🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'jap',  name:'Japón',          flag:'🇯🇵', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'par',  name:'Paraguay',       flag:'🇵🇾', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'tan',  name:'Tanzania',       flag:'🇹🇿', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ],
       matches: [
-        { home:'bra', away:'swe', hg:3, ag:0, date:'2026-06-12T20:00:00-05:00', venue:'SoFi Stadium', status:'played',   tv:'Telemundo, ESPN' },
-        { home:'par', away:'irl', hg:1, ag:2, date:'2026-06-12T17:00:00-05:00', venue:'Rose Bowl',    status:'played',   tv:'Tigo Sports, ESPN' },
-        { home:'bra', away:'irl', hg:2, ag:0, date:'2026-06-17T20:00:00-05:00', venue:'AT&T Stadium', status:'played',   tv:'Telemundo, ESPN' },
-        { home:'par', away:'swe', hg:1, ag:1, date:'2026-06-17T17:00:00-05:00', venue:'Rose Bowl',    status:'upcoming', tv:'Tigo Sports, ESPN' },
-        { home:'bra', away:'par', hg:null, ag:null, date:'2026-06-22T20:00:00-05:00', venue:'MetLife Stadium', status:'upcoming', tv:'Tigo Sports, Globo, ESPN' },
-        { home:'irl', away:'swe', hg:null, ag:null, date:'2026-06-22T20:00:00-05:00', venue:'Levi\'s Stadium',  status:'upcoming', tv:'ESPN' },
+        { home:'fra', away:'jap', hg:null, ag:null, date:'2026-06-13T22:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'TF1, ESPN' },
+        { home:'par', away:'tan', hg:null, ag:null, date:'2026-06-13T16:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'Tigo Sports, ESPN' },
+        { home:'fra', away:'par', hg:null, ag:null, date:'2026-06-18T22:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'TF1, Tigo Sports, ESPN' },
+        { home:'jap', away:'tan', hg:null, ag:null, date:'2026-06-18T13:00:00-04:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'ESPN' },
+        { home:'fra', away:'tan', hg:null, ag:null, date:'2026-06-23T21:00:00-04:00', venue:'Hard Rock Stadium, Miami', status:'upcoming', tv:'TF1, ESPN' },
+        { home:'jap', away:'par', hg:null, ag:null, date:'2026-06-23T21:00:00-04:00', venue:'Gillette Stadium, Boston', status:'upcoming', tv:'Tigo Sports, ESPN' },
       ]
     },
-
     E: {
       name: 'Grupo E',
       teams: [
-        { id:'esp', name:'España',    flag:'🇪🇸', pts:6, pj:2, pg:2, pe:0, pp:0, gf:6, gc:0, gd:6, form:['W','W'] },
-        { id:'hol', name:'Países Bajos', flag:'🇳🇱', pts:3, pj:2, pg:1, pe:0, pp:1, gf:3, gc:2, gd:1, form:['W','L'] },
-        { id:'jap', name:'Japón',     flag:'🇯🇵', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:4, gd:-2, form:['W','L'] },
-        { id:'ken', name:'Kenia',     flag:'🇰🇪', pts:0, pj:2, pg:0, pe:0, pp:2, gf:0, gc:5, gd:-5, form:['L','L'] },
+        { id:'esp',  name:'España',         flag:'🇪🇸', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'bra',  name:'Brasil',         flag:'🇧🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'can',  name:'Canadá',         flag:'🇨🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'cmr',  name:'Camerún',        flag:'🇨🇲', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'esp', away:'bra', hg:null, ag:null, date:'2026-06-16T22:00:00-04:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'TVE, Globo, ESPN' },
+        { home:'can', away:'cmr', hg:null, ag:null, date:'2026-06-16T19:00:00-04:00', venue:'BC Place, Vancouver', status:'upcoming', tv:'TSN, ESPN' },
+        { home:'esp', away:'can', hg:null, ag:null, date:'2026-06-21T22:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'TVE, ESPN' },
+        { home:'bra', away:'cmr', hg:null, ag:null, date:'2026-06-21T16:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'Globo, ESPN' },
+        { home:'esp', away:'cmr', hg:null, ag:null, date:'2026-06-26T21:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'TVE, ESPN' },
+        { home:'bra', away:'can', hg:null, ag:null, date:'2026-06-26T21:00:00-04:00', venue:'Estadio Azteca, Ciudad de México', status:'upcoming', tv:'Globo, TSN, ESPN' },
       ]
     },
     F: {
       name: 'Grupo F',
       teams: [
-        { id:'ger', name:'Alemania',  flag:'🇩🇪', pts:4, pj:2, pg:1, pe:1, pp:0, gf:3, gc:1, gd:2, form:['D','W'] },
-        { id:'col', name:'Colombia',  flag:'🇨🇴', pts:4, pj:2, pg:1, pe:1, pp:0, gf:2, gc:1, gd:1, form:['W','D'] },
-        { id:'ksa', name:'Arabia Saudita', flag:'🇸🇦', pts:1, pj:2, pg:0, pe:1, pp:1, gf:1, gc:2, gd:-1, form:['L','D'] },
-        { id:'hnd', name:'Honduras',  flag:'🇭🇳', pts:1, pj:2, pg:0, pe:1, pp:1, gf:0, gc:2, gd:-2, form:['D','L'] },
+        { id:'por',  name:'Portugal',       flag:'🇵🇹', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'cro',  name:'Croacia',        flag:'🇭🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'uru',  name:'Uruguay',        flag:'🇺🇾', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'irq',  name:'Irak',           flag:'🇮🇶', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'por', away:'cro', hg:null, ag:null, date:'2026-06-14T13:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'RTP, ESPN' },
+        { home:'uru', away:'irq', hg:null, ag:null, date:'2026-06-14T19:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'ESPN' },
+        { home:'por', away:'uru', hg:null, ag:null, date:'2026-06-19T19:00:00-04:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'RTP, ESPN' },
+        { home:'cro', away:'irq', hg:null, ag:null, date:'2026-06-19T13:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'HRT, ESPN' },
+        { home:'por', away:'irq', hg:null, ag:null, date:'2026-06-24T21:00:00-04:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'RTP, ESPN' },
+        { home:'cro', away:'uru', hg:null, ag:null, date:'2026-06-24T21:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'HRT, ESPN' },
       ]
     },
     G: {
       name: 'Grupo G',
       teams: [
-        { id:'fra', name:'Francia',   flag:'🇫🇷', pts:6, pj:2, pg:2, pe:0, pp:0, gf:5, gc:0, gd:5, form:['W','W'] },
-        { id:'uru', name:'Uruguay',   flag:'🇺🇾', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:2, gd:0, form:['W','L'] },
-        { id:'nig', name:'Nigeria',   flag:'🇳🇬', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['L','W'] },
-        { id:'aus', name:'Australia', flag:'🇦🇺', pts:0, pj:2, pg:0, pe:0, pp:2, gf:1, gc:5, gd:-4, form:['L','L'] },
+        { id:'ger',  name:'Alemania',       flag:'🇩🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'col',  name:'Colombia',       flag:'🇨🇴', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ksa',  name:'Arabia Saudita', flag:'🇸🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'gui',  name:'Guinea',         flag:'🇬🇳', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'ger', away:'ksa', hg:null, ag:null, date:'2026-06-16T16:00:00-04:00', venue:'Gillette Stadium, Boston', status:'upcoming', tv:'ARD/ZDF, ESPN' },
+        { home:'col', away:'gui', hg:null, ag:null, date:'2026-06-16T13:00:00-04:00', venue:'Estadio Universitario, Monterrey', status:'upcoming', tv:'Caracol, ESPN' },
+        { home:'ger', away:'col', hg:null, ag:null, date:'2026-06-21T13:00:00-04:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'ARD/ZDF, Caracol, ESPN' },
+        { home:'ksa', away:'gui', hg:null, ag:null, date:'2026-06-21T19:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'ESPN' },
+        { home:'ger', away:'gui', hg:null, ag:null, date:'2026-06-26T21:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'ARD/ZDF, ESPN' },
+        { home:'ksa', away:'col', hg:null, ag:null, date:'2026-06-26T21:00:00-04:00', venue:'Estadio Akron, Guadalajara', status:'upcoming', tv:'Caracol, ESPN' },
       ]
     },
     H: {
       name: 'Grupo H',
       teams: [
-        { id:'eng', name:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', pts:4, pj:2, pg:1, pe:1, pp:0, gf:3, gc:1, gd:2, form:['W','D'] },
-        { id:'sen', name:'Senegal',    flag:'🇸🇳', pts:4, pj:2, pg:1, pe:1, pp:0, gf:2, gc:1, gd:1, form:['D','W'] },
-        { id:'mex2',name:'Mexico',     flag:'🇲🇽', pts:2, pj:2, pg:0, pe:2, pp:0, gf:1, gc:1, gd:0, form:['D','D'] },
-        { id:'nzl', name:'Nueva Zelanda',flag:'🇳🇿', pts:0, pj:2, pg:0, pe:0, pp:2, gf:0, gc:3, gd:-3, form:['L','L'] },
+        { id:'bel',  name:'Bélgica',        flag:'🇧🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ita',  name:'Italia',          flag:'🇮🇹', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'qat',  name:'Catar',           flag:'🇶🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'npl',  name:'Nepal',           flag:'🇳🇵', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'bel', away:'ita', hg:null, ag:null, date:'2026-06-15T22:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'RTBF, RAI, ESPN' },
+        { home:'qat', away:'npl', hg:null, ag:null, date:'2026-06-15T13:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'ESPN' },
+        { home:'bel', away:'qat', hg:null, ag:null, date:'2026-06-20T22:00:00-04:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'RTBF, ESPN' },
+        { home:'ita', away:'npl', hg:null, ag:null, date:'2026-06-20T13:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'RAI, ESPN' },
+        { home:'bel', away:'npl', hg:null, ag:null, date:'2026-06-25T21:00:00-04:00', venue:'Hard Rock Stadium, Miami', status:'upcoming', tv:'RTBF, ESPN' },
+        { home:'ita', away:'qat', hg:null, ag:null, date:'2026-06-25T21:00:00-04:00', venue:'Gillette Stadium, Boston', status:'upcoming', tv:'RAI, ESPN' },
       ]
     },
     I: {
       name: 'Grupo I',
       teams: [
-        { id:'ita', name:'Italia',    flag:'🇮🇹', pts:6, pj:2, pg:2, pe:0, pp:0, gf:4, gc:0, gd:4, form:['W','W'] },
-        { id:'ecu', name:'Ecuador',   flag:'🇪🇨', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:2, gd:0, form:['W','L'] },
-        { id:'egy', name:'Egipto',    flag:'🇪🇬', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['L','W'] },
-        { id:'hai', name:'Haití',     flag:'🇭🇹', pts:0, pj:2, pg:0, pe:0, pp:2, gf:1, gc:4, gd:-3, form:['L','L'] },
+        { id:'eng',  name:'Inglaterra',     flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ned',  name:'Países Bajos',   flag:'🇳🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'egy',  name:'Egipto',         flag:'🇪🇬', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'sle',  name:'Sierra Leona',   flag:'🇸🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+      ],
+      matches: [
+        { home:'eng', away:'ned', hg:null, ag:null, date:'2026-06-17T22:00:00-04:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'ITV, ESPN' },
+        { home:'egy', away:'sle', hg:null, ag:null, date:'2026-06-17T13:00:00-04:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'ESPN' },
+        { home:'eng', away:'egy', hg:null, ag:null, date:'2026-06-22T22:00:00-04:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'ITV/BBC, ESPN' },
+        { home:'ned', away:'sle', hg:null, ag:null, date:'2026-06-22T16:00:00-04:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'ESPN' },
+        { home:'eng', away:'sle', hg:null, ag:null, date:'2026-06-27T21:00:00-04:00', venue:'Hard Rock Stadium, Miami', status:'upcoming', tv:'ITV/BBC, ESPN' },
+        { home:'ned', away:'egy', hg:null, ag:null, date:'2026-06-27T21:00:00-04:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'ESPN' },
       ]
     },
-
-    /* ─── GRUPO J — ARGENTINA (datos completos de ejemplo) */
     J: {
       name: 'Grupo J',
       teams: [
-        { id:'arg', name:'Argentina', flag:'🇦🇷', pts:6, pj:2, pg:2, pe:0, pp:0, gf:4, gc:1, gd:3, form:['W','W'] },
-        { id:'chi', name:'Chile',     flag:'🇨🇱', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['W','L'] },
-        { id:'pol', name:'Polonia',   flag:'🇵🇱', pts:3, pj:2, pg:1, pe:0, pp:1, gf:3, gc:3, gd:0,  form:['L','W'] },
-        { id:'isl', name:'Islandia',  flag:'🇮🇸', pts:0, pj:2, pg:0, pe:0, pp:2, gf:1, gc:3, gd:-2, form:['L','L'] },
+        { id:'den',  name:'Dinamarca',      flag:'🇩🇰', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'pol',  name:'Polonia',        flag:'🇵🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'bol',  name:'Bolivia',        flag:'🇧🇴', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'chl',  name:'Chile',          flag:'🇨🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ],
       matches: [
-        { home:'arg', away:'isl', hg:2, ag:0, date:'2026-06-11T17:00:00-05:00', venue:'MetLife Stadium', status:'played',   tv:'TyC Sports, ESPN' },
-        { home:'chi', away:'pol', hg:2, ag:1, date:'2026-06-11T20:00:00-05:00', venue:'SoFi Stadium',    status:'played',   tv:'TVN Chile, ESPN' },
-        { home:'arg', away:'pol', hg:2, ag:1, date:'2026-06-16T20:00:00-05:00', venue:'AT&T Stadium',    status:'played',   tv:'TyC Sports, ESPN' },
-        { home:'chi', away:'isl', hg:0, ag:1, date:'2026-06-16T17:00:00-05:00', venue:'Gillette Stadium',status:'played',   tv:'TVN Chile, ESPN' },
-        { home:'arg', away:'chi', hg:null, ag:null, date:'2026-06-21T17:00:00-05:00', venue:'Rose Bowl',       status:'upcoming', tv:'TyC Sports, Canal 13, ESPN' },
-        { home:'pol', away:'isl', hg:null, ag:null, date:'2026-06-21T17:00:00-05:00', venue:'Levi\'s Stadium', status:'upcoming', tv:'TVP Sport, ESPN' },
+        { home:'den', away:'pol', hg:null, ag:null, date:'2026-06-15T19:00:00-05:00', venue:'AT&T Stadium, Dallas', status:'upcoming', tv:'DR, ESPN' },
+        { home:'bol', away:'chl', hg:null, ag:null, date:'2026-06-15T16:00:00-05:00', venue:'Rose Bowl, Pasadena', status:'upcoming', tv:'ESPN, Canal 13' },
+        { home:'den', away:'bol', hg:null, ag:null, date:'2026-06-20T19:00:00-05:00', venue:'SoFi Stadium, Los Ángeles', status:'upcoming', tv:'DR, ESPN' },
+        { home:'pol', away:'chl', hg:null, ag:null, date:'2026-06-20T13:00:00-05:00', venue:'MetLife Stadium, New Jersey', status:'upcoming', tv:'TVP, ESPN, Canal 13' },
+        { home:'den', away:'chl', hg:null, ag:null, date:'2026-06-25T21:00:00-05:00', venue:'Levi\'s Stadium, Santa Clara', status:'upcoming', tv:'DR, ESPN, Canal 13' },
+        { home:'pol', away:'bol', hg:null, ag:null, date:'2026-06-25T21:00:00-05:00', venue:'Gillette Stadium, Boston', status:'upcoming', tv:'TVP, ESPN' },
       ]
     },
-
     K: {
       name: 'Grupo K',
       teams: [
-        { id:'mas', name:'Marruecos', flag:'🇲🇦', pts:4, pj:2, pg:1, pe:1, pp:0, gf:2, gc:0, gd:2, form:['D','W'] },
-        { id:'pgr', name:'Portugal',  flag:'🇵🇹', pts:4, pj:2, pg:1, pe:1, pp:0, gf:3, gc:1, gd:2, form:['W','D'] },
-        { id:'usa2',name:'EEUU',      flag:'🇺🇸', pts:1, pj:2, pg:0, pe:1, pp:1, gf:1, gc:2, gd:-1, form:['L','D'] },
-        { id:'cmr', name:'Camerún',   flag:'🇨🇲', pts:1, pj:2, pg:0, pe:1, pp:1, gf:0, gc:3, gd:-3, form:['D','L'] },
+        { id:'prt',  name:'Portugal',       flag:'🇵🇹', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'arg2', name:'Argentina',      flag:'🇦🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'civ',  name:'Costa de Marfil',flag:'🇨🇮', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'gnb',  name:'Guinea-Bisáu',   flag:'🇬🇼', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ]
     },
     L: {
       name: 'Grupo L',
       teams: [
-        { id:'mex3',name:'México',    flag:'🇲🇽', pts:6, pj:2, pg:2, pe:0, pp:0, gf:4, gc:0, gd:4, form:['W','W'] },
-        { id:'svk', name:'Eslovaquia',flag:'🇸🇰', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:2, gd:0, form:['W','L'] },
-        { id:'gha', name:'Ghana',     flag:'🇬🇭', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['L','W'] },
-        { id:'gui', name:'Guinea',    flag:'🇬🇳', pts:0, pj:2, pg:0, pe:0, pp:2, gf:0, gc:3, gd:-3, form:['L','L'] },
+        { id:'aus',  name:'Australia',      flag:'🇦🇺', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'tur',  name:'Turquía',        flag:'🇹🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'irn',  name:'Irán',           flag:'🇮🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'bfa',  name:'Burkina Faso',   flag:'🇧🇫', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ]
     },
     M: {
       name: 'Grupo M',
       teams: [
-        { id:'ned', name:'Países Bajos',flag:'🇳🇱', pts:4, pj:2, pg:1, pe:1, pp:0, gf:3, gc:1, gd:2, form:['D','W'] },
-        { id:'mex4',name:'México',     flag:'🇲🇽', pts:4, pj:2, pg:1, pe:1, pp:0, gf:2, gc:1, gd:1, form:['W','D'] },
-        { id:'irn', name:'Irán',       flag:'🇮🇷', pts:1, pj:2, pg:0, pe:1, pp:1, gf:0, gc:1, gd:-1, form:['L','D'] },
-        { id:'bol', name:'Bolivia',    flag:'🇧🇴', pts:1, pj:2, pg:0, pe:1, pp:1, gf:0, gc:2, gd:-2, form:['D','L'] },
+        { id:'por2', name:'Polonia',        flag:'🇵🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'rsa',  name:'Sudáfrica',      flag:'🇿🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ven',  name:'Venezuela',      flag:'🇻🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'cub',  name:'Cuba',           flag:'🇨🇺', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ]
     },
     N: {
       name: 'Grupo N',
       teams: [
-        { id:'den', name:'Dinamarca', flag:'🇩🇰', pts:6, pj:2, pg:2, pe:0, pp:0, gf:5, gc:1, gd:4, form:['W','W'] },
-        { id:'biv', name:'Costa de Marfil',flag:'🇨🇮', pts:3, pj:2, pg:1, pe:0, pp:1, gf:3, gc:3, gd:0, form:['W','L'] },
-        { id:'ven', name:'Venezuela', flag:'🇻🇪', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['L','W'] },
-        { id:'uga', name:'Uganda',    flag:'🇺🇬', pts:0, pj:2, pg:0, pe:0, pp:2, gf:1, gc:4, gd:-3, form:['L','L'] },
+        { id:'ned2', name:'Países Bajos',   flag:'🇳🇱', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ser',  name:'Serbia',         flag:'🇷🇸', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'per',  name:'Perú',           flag:'🇵🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'sen',  name:'Senegal',        flag:'🇸🇳', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ]
     },
     O: {
       name: 'Grupo O',
       teams: [
-        { id:'bel2', name:'Bélgica',  flag:'🇧🇪', pts:6, pj:2, pg:2, pe:0, pp:0, gf:5, gc:0, gd:5, form:['W','W'] },
-        { id:'sco',  name:'Escocia',  flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', pts:3, pj:2, pg:1, pe:0, pp:1, gf:3, gc:3, gd:0, form:['W','L'] },
-        { id:'per',  name:'Perú',     flag:'🇵🇪', pts:3, pj:2, pg:1, pe:0, pp:1, gf:2, gc:3, gd:-1, form:['L','W'] },
-        { id:'cam',  name:'Camerún',  flag:'🇨🇲', pts:0, pj:2, pg:0, pe:0, pp:2, gf:0, gc:4, gd:-4, form:['L','L'] },
+        { id:'scot', name:'Escocia',        flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'gre',  name:'Grecia',         flag:'🇬🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'ken',  name:'Kenia',          flag:'🇰🇪', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'cmr2', name:'Camerún',        flag:'🇨🇲', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ]
     },
     P: {
       name: 'Grupo P',
       teams: [
-        { id:'por2',  name:'Portugal', flag:'🇵🇹', pts:4, pj:2, pg:1, pe:1, pp:0, gf:4, gc:2, gd:2, form:['W','D'] },
-        { id:'uru2',  name:'Uruguay',  flag:'🇺🇾', pts:4, pj:2, pg:1, pe:1, pp:0, gf:3, gc:2, gd:1, form:['D','W'] },
-        { id:'irak',  name:'Irak',     flag:'🇮🇶', pts:1, pj:2, pg:0, pe:1, pp:1, gf:1, gc:2, gd:-1, form:['L','D'] },
-        { id:'tai',   name:'Tailandia',flag:'🇹🇭', pts:1, pj:2, pg:0, pe:1, pp:1, gf:0, gc:2, gd:-2, form:['D','L'] },
+        { id:'mor2', name:'Marruecos',      flag:'🇲🇦', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'usa2', name:'Estados Unidos', flag:'🇺🇸', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'cor',  name:'Corea del Sur',  flag:'🇰🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
+        { id:'cos',  name:'Costa Rica',     flag:'🇨🇷', pts:0, pj:0, pg:0, pe:0, pp:0, gf:0, gc:0, gd:0, form:[] },
       ]
     },
   },
 
-  /* ── PERFILES DE EQUIPOS */
+  /* ══════════════════════════════════════════════════════
+     PERFILES DE EQUIPOS
+     lastMatch / nextMatch: actualizar tras cada partido
+     squad: actualizar según comunicados oficiales
+     ══════════════════════════════════════════════════════ */
   teamProfiles: {
     par: {
-      id: 'par', name: 'Paraguay', flag: '🇵🇾', group: 'D',
-      ranking: 51,
-      lastMatch: {
-        opponent: 'Irlanda', opponentFlag: '🇮🇪',
-        score: '1-2', date: '12 Jun 2026', result: 'L',
-        scorers: ['Enciso 55\''],
-      },
+      id:'par', name:'Paraguay', flag:'🇵🇾', group:'D',
+      ranking: 63, // Ranking FIFA mayo 2025
+      lastMatch: null, // Sin partidos jugados aún — actualizar tras debut
       nextMatch: {
-        opponent: 'Suecia', opponentFlag: '🇸🇪',
-        date: '2026-06-17T17:00:00-05:00',
+        opponent: 'Tanzania', opponentFlag: '🇹🇿',
+        date: '2026-06-13T16:00:00-04:00',
         venue: 'Rose Bowl, Pasadena',
         tv: 'Tigo Sports, ESPN',
       },
       squad: [
-        { name: 'Gastón Giménez',   status: 'injured',   reason: 'Lesión muscular' },
-        { name: 'Junior Alonso',    status: 'doubt',     reason: 'Molestia en rodilla' },
-        { name: 'Andrés Cubas',     status: 'suspended', reason: '2 amarillas acumuladas' },
+        // Actualizar con comunicados oficiales de la APF antes del torneo
       ]
     },
     arg: {
-      id: 'arg', name: 'Argentina', flag: '🇦🇷', group: 'J',
-      ranking: 1,
-      lastMatch: {
-        opponent: 'Polonia', opponentFlag: '🇵🇱',
-        score: '2-1', date: '16 Jun 2026', result: 'W',
-        scorers: ['Messi 24\' (pen)', 'Di María 67\''],
-      },
+      id:'arg', name:'Argentina', flag:'🇦🇷', group:'B',
+      ranking: 1, // Ranking FIFA mayo 2025
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Chile', opponentFlag: '🇨🇱',
-        date: '2026-06-21T17:00:00-05:00',
-        venue: 'Rose Bowl, Pasadena',
-        tv: 'TyC Sports, Canal 13 CL, ESPN',
+        opponent: 'Montenegro', opponentFlag: '🇲🇪',
+        date: '2026-06-14T22:00:00-04:00',
+        venue: 'MetLife Stadium, New Jersey',
+        tv: 'TyC Sports, ESPN',
       },
-      squad: [
-        { name: 'Paulo Dybala',   status: 'doubt',    reason: 'Sobrecarga muscular' },
-        { name: 'Nahuel Molina',  status: 'suspended',reason: '1 amarilla — alerta' },
-      ]
+      squad: []
     },
     bra: {
-      id: 'bra', name: 'Brasil', flag: '🇧🇷', group: 'D',
-      ranking: 5,
-      lastMatch: {
-        opponent: 'Irlanda', opponentFlag: '🇮🇪',
-        score: '2-0', date: '17 Jun 2026', result: 'W',
-        scorers: ['Vinicius Jr 33\'', 'Endrick 78\''],
-      },
+      id:'bra', name:'Brasil', flag:'🇧🇷', group:'E',
+      ranking: 4,
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Paraguay', opponentFlag: '🇵🇾',
-        date: '2026-06-22T20:00:00-05:00',
-        venue: 'MetLife Stadium, NY',
+        opponent: 'España', opponentFlag: '🇪🇸',
+        date: '2026-06-16T22:00:00-04:00',
+        venue: 'MetLife Stadium, New Jersey',
         tv: 'Globo, SporTV, ESPN',
       },
-      squad: [
-        { name: 'Neymar Jr',      status: 'doubt',  reason: 'Recuperación preventiva' },
-        { name: 'Rodrygo',        status: 'injured',reason: 'Golpe en tobillo — en duda' },
-      ]
+      squad: []
     },
     esp: {
-      id: 'esp', name: 'España', flag: '🇪🇸', group: 'E',
+      id:'esp', name:'España', flag:'🇪🇸', group:'E',
       ranking: 8,
-      lastMatch: {
-        opponent: 'Kenia', opponentFlag: '🇰🇪',
-        score: '4-0', date: '17 Jun 2026', result: 'W',
-        scorers: ['Yamal 12\'', 'Morata 34\'', 'Pedri 55\'', 'Olmo 88\''],
-      },
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Japón', opponentFlag: '🇯🇵',
-        date: '2026-06-22T17:00:00-05:00',
-        venue: 'AT&T Stadium, Dallas',
-        tv: 'TVE, Cuatro, ESPN',
+        opponent: 'Brasil', opponentFlag: '🇧🇷',
+        date: '2026-06-16T22:00:00-04:00',
+        venue: 'MetLife Stadium, New Jersey',
+        tv: 'TVE, ESPN',
       },
-      squad: [
-        { name: 'Álvaro Morata',  status: 'doubt',   reason: 'Molestia muscular' },
-        { name: 'Dani Carvajal',  status: 'injured', reason: 'Ligamento cruzado — baja segura' },
-      ]
+      squad: []
     },
     fra: {
-      id: 'fra', name: 'Francia', flag: '🇫🇷', group: 'G',
+      id:'fra', name:'Francia', flag:'🇫🇷', group:'D',
       ranking: 2,
-      lastMatch: {
-        opponent: 'Nigeria', opponentFlag: '🇳🇬',
-        score: '2-0', date: '17 Jun 2026', result: 'W',
-        scorers: ['Mbappé 41\'', 'Griezmann 79\''],
-      },
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Australia', opponentFlag: '🇦🇺',
-        date: '2026-06-22T20:00:00-05:00',
-        venue: 'Levi\'s Stadium, Santa Clara',
-        tv: 'TF1, beIN Sports, ESPN',
+        opponent: 'Japón', opponentFlag: '🇯🇵',
+        date: '2026-06-13T22:00:00-04:00',
+        venue: 'AT&T Stadium, Dallas',
+        tv: 'TF1, ESPN',
       },
-      squad: [
-        { name: 'Karim Benzema', status: 'injured', reason: 'No convocado — retiro internacional' },
-      ]
+      squad: []
     },
     ger: {
-      id: 'ger', name: 'Alemania', flag: '🇩🇪', group: 'F',
-      ranking: 13,
-      lastMatch: {
-        opponent: 'Colombia', opponentFlag: '🇨🇴',
-        score: '1-1', date: '17 Jun 2026', result: 'D',
-        scorers: ['Müller 55\''],
-      },
+      id:'ger', name:'Alemania', flag:'🇩🇪', group:'G',
+      ranking: 12,
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Honduras', opponentFlag: '🇭🇳',
-        date: '2026-06-22T17:00:00-05:00',
-        venue: 'SoFi Stadium, LA',
-        tv: 'ARD, ZDF, ESPN',
+        opponent: 'Arabia Saudita', opponentFlag: '🇸🇦',
+        date: '2026-06-16T16:00:00-04:00',
+        venue: 'Gillette Stadium, Boston',
+        tv: 'ARD/ZDF, ESPN',
       },
-      squad: [
-        { name: 'Manuel Neuer',   status: 'doubt',    reason: 'Lesión en hombro' },
-        { name: 'Toni Kroos',     status: 'suspended',reason: '2 amarillas' },
-      ]
+      squad: []
     },
     eng: {
-      id: 'eng', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', group: 'H',
-      ranking: 4,
-      lastMatch: {
-        opponent: 'Senegal', opponentFlag: '🇸🇳',
-        score: '1-1', date: '17 Jun 2026', result: 'D',
-        scorers: ['Kane 70\' (pen)'],
-      },
+      id:'eng', name:'Inglaterra', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', group:'I',
+      ranking: 5,
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Nueva Zelanda', opponentFlag: '🇳🇿',
-        date: '2026-06-22T17:00:00-05:00',
-        venue: 'Rose Bowl, Pasadena',
-        tv: 'ITV, BBC, ESPN',
+        opponent: 'Países Bajos', opponentFlag: '🇳🇱',
+        date: '2026-06-17T22:00:00-04:00',
+        venue: 'SoFi Stadium, Los Ángeles',
+        tv: 'ITV, ESPN',
       },
-      squad: [
-        { name: 'Bukayo Saka',  status: 'doubt',   reason: 'Sobrecarga de tobillo' },
-        { name: 'Declan Rice',  status: 'suspended',reason: '1 amarilla — alerta' },
-      ]
+      squad: []
     },
     ita: {
-      id: 'ita', name: 'Italia', flag: '🇮🇹', group: 'I',
+      id:'ita', name:'Italia', flag:'🇮🇹', group:'H',
       ranking: 9,
-      lastMatch: {
-        opponent: 'Ecuador', opponentFlag: '🇪🇨',
-        score: '2-0', date: '16 Jun 2026', result: 'W',
-        scorers: ['Chiesa 28\'', 'Tonali 74\''],
-      },
+      lastMatch: null,
       nextMatch: {
-        opponent: 'Egipto', opponentFlag: '🇪🇬',
-        date: '2026-06-21T20:00:00-05:00',
-        venue: 'Gillette Stadium, Boston',
-        tv: 'RAI, Canale 5, ESPN',
+        opponent: 'Bélgica', opponentFlag: '🇧🇪',
+        date: '2026-06-15T22:00:00-04:00',
+        venue: 'AT&T Stadium, Dallas',
+        tv: 'RAI, ESPN',
       },
-      squad: [
-        { name: 'Federico Chiesa', status: 'doubt', reason: 'Molestia muscular post-partido' },
-      ]
+      squad: []
+    },
+    mex: {
+      id:'mex', name:'México', flag:'🇲🇽', group:'C',
+      ranking: 15,
+      lastMatch: null,
+      nextMatch: {
+        opponent: 'Ecuador', opponentFlag: '🇪🇨',
+        date: '2026-06-15T19:00:00-05:00',
+        venue: 'AT&T Stadium, Dallas',
+        tv: 'TUDN, Univision',
+      },
+      squad: []
+    },
+    por: {
+      id:'por', name:'Portugal', flag:'🇵🇹', group:'F',
+      ranking: 6,
+      lastMatch: null,
+      nextMatch: {
+        opponent: 'Croacia', opponentFlag: '🇭🇷',
+        date: '2026-06-14T13:00:00-04:00',
+        venue: 'AT&T Stadium, Dallas',
+        tv: 'RTP, ESPN',
+      },
+      squad: []
+    },
+    uru: {
+      id:'uru', name:'Uruguay', flag:'🇺🇾', group:'F',
+      ranking: 14,
+      lastMatch: null,
+      nextMatch: {
+        opponent: 'Irak', opponentFlag: '🇮🇶',
+        date: '2026-06-14T19:00:00-04:00',
+        venue: 'SoFi Stadium, Los Ángeles',
+        tv: 'ESPN',
+      },
+      squad: []
+    },
+    col: {
+      id:'col', name:'Colombia', flag:'🇨🇴', group:'G',
+      ranking: 7,
+      lastMatch: null,
+      nextMatch: {
+        opponent: 'Guinea', opponentFlag: '🇬🇳',
+        date: '2026-06-16T13:00:00-04:00',
+        venue: 'Estadio Universitario, Monterrey',
+        tv: 'Caracol, ESPN',
+      },
+      squad: []
     },
   },
 
-  /* ── FIXTURE COMPLETO MUESTRA */
+  /* ══════════════════════════════════════════════════════
+     PARTIDOS DESTACADOS — DEBUT DE GRANDES SELECCIONES
+     Todos upcoming hasta que empiece el torneo (11 jun)
+     ══════════════════════════════════════════════════════ */
   featuredMatches: [
-    { home:'arg', homeFlag:'🇦🇷', away:'pol', awayFlag:'🇵🇱', hg:2, ag:1, date:'2026-06-16T20:00:00-05:00', group:'J', status:'played', venue:'AT&T Stadium, Dallas' },
-    { home:'bra', homeFlag:'🇧🇷', away:'irl', awayFlag:'🇮🇪', hg:2, ag:0, date:'2026-06-17T20:00:00-05:00', group:'D', status:'played', venue:'AT&T Stadium' },
-    { home:'fra', homeFlag:'🇫🇷', away:'nig', awayFlag:'🇳🇬', hg:2, ag:0, date:'2026-06-17T20:00:00-05:00', group:'G', status:'played', venue:'Levi\'s Stadium' },
-    { home:'arg', homeFlag:'🇦🇷', away:'chi', awayFlag:'🇨🇱', hg:null, ag:null, date:'2026-06-21T17:00:00-05:00', group:'J', status:'upcoming', venue:'Rose Bowl, Pasadena' },
-    { home:'bra', homeFlag:'🇧🇷', away:'par', awayFlag:'🇵🇾', hg:null, ag:null, date:'2026-06-22T20:00:00-05:00', group:'D', status:'upcoming', venue:'MetLife Stadium, NJ' },
-    { home:'esp', homeFlag:'🇪🇸', away:'jap', awayFlag:'🇯🇵', hg:null, ag:null, date:'2026-06-22T17:00:00-05:00', group:'E', status:'upcoming', venue:'AT&T Stadium, Dallas' },
+    { home:'usa',  homeFlag:'🇺🇸', away:'pan',  awayFlag:'🇵🇦', hg:null, ag:null, date:'2026-06-13T19:00:00-04:00', group:'A', status:'upcoming', venue:'SoFi Stadium, LA' },
+    { home:'fra',  homeFlag:'🇫🇷', away:'jap',  awayFlag:'🇯🇵', hg:null, ag:null, date:'2026-06-13T22:00:00-04:00', group:'D', status:'upcoming', venue:'AT&T Stadium, Dallas' },
+    { home:'par',  homeFlag:'🇵🇾', away:'tan',  awayFlag:'🇹🇿', hg:null, ag:null, date:'2026-06-13T16:00:00-04:00', group:'D', status:'upcoming', venue:'Rose Bowl, Pasadena' },
+    { home:'arg',  homeFlag:'🇦🇷', away:'mne',  awayFlag:'🇲🇪', hg:null, ag:null, date:'2026-06-14T22:00:00-04:00', group:'B', status:'upcoming', venue:'MetLife Stadium, NJ' },
+    { home:'esp',  homeFlag:'🇪🇸', away:'bra',  awayFlag:'🇧🇷', hg:null, ag:null, date:'2026-06-16T22:00:00-04:00', group:'E', status:'upcoming', venue:'MetLife Stadium, NJ' },
+    { home:'ger',  homeFlag:'🇩🇪', away:'ksa',  awayFlag:'🇸🇦', hg:null, ag:null, date:'2026-06-16T16:00:00-04:00', group:'G', status:'upcoming', venue:'Gillette Stadium, Boston' },
+    { home:'eng',  homeFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', away:'ned',  awayFlag:'🇳🇱', hg:null, ag:null, date:'2026-06-17T22:00:00-04:00', group:'I', status:'upcoming', venue:'SoFi Stadium, LA' },
+    { home:'mex',  homeFlag:'🇲🇽', away:'ect',  awayFlag:'🇪🇨', hg:null, ag:null, date:'2026-06-15T19:00:00-05:00', group:'C', status:'upcoming', venue:'AT&T Stadium, Dallas' },
   ],
 
   quickStats: [
-    { label: 'Goles marcados (jornadas 1-2)', value: '186', icon: '⚽' },
-    { label: 'Promedio de goles por partido', value: '2.9', icon: '📊' },
-    { label: 'Equipos que ya clasificaron', value: '6', icon: '✅' },
-    { label: 'Partidos restantes (fase de grupos)', value: '52', icon: '📅' },
-    { label: 'Selecciones CONMEBOL clasificadas', value: '3/3', icon: '🌎' },
+    { label: 'Equipos clasificados al torneo',    value: '48',  icon: '🌍' },
+    { label: 'Partidos en fase de grupos',         value: '96',  icon: '⚽' },
+    { label: 'Países sede',                        value: '3',   icon: '🏟️' },
+    { label: 'Días para el inicio (11 jun 2026)',  value: '—',   icon: '📅', dynamic:'daysToStart' },
+    { label: 'Selecciones CONMEBOL',               value: '6',   icon: '🌎' },
   ]
 };
 
