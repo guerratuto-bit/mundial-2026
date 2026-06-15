@@ -132,6 +132,7 @@
             </tr>
           </thead>
           <tbody id="tv-guide-body">
+            <!-- La magia pasa acá -->
             </tbody>
         </table>
       </div>
@@ -157,39 +158,91 @@
       }
     }
 
-    // 2. BASE DE DATOS ESTATICA DE TRANSMISIÓN (La editamos 1 sola vez)
-    // Usamos formato ISO (UTC-4 para USA Este como base)
+    // 2. EL MEGA-DICCIONARIO GLOBAL DE DERECHOS TV
+    const derechosTV = {
+      // CONMEBOL (Sudamérica)
+      "Paraguay": "Telefuturo, SNT, Trece, Tigo Sports",
+      "Argentina": "TyC Sports, TV Pública, DSports",
+      "Brazil": "TV Globo, SporTV, CazéTV",
+      "Colombia": "Caracol TV, RCN, DSports",
+      "Chile": "Chilevisión, Canal 13, DSports",
+      "Peru": "América TV, ATV, Latina",
+      "Uruguay": "Canal 10, Teledoce, DSports",
+      "Ecuador": "Teleamazonas, El Canal del Fútbol",
+      "Bolivia": "Unitel, Red Uno, Tigo Sports",
+      "Venezuela": "Televen, DSports",
+
+      // CONCACAF (Norte/Centroamérica)
+      "Mexico": "TV Azteca, Canal 5, TUDN, Vix",
+      "United States": "FOX, FS1, Telemundo, Peacock",
+      "Canada": "TSN, RDS, CTV",
+      "Costa Rica": "Teletica, Repretel",
+      "Panama": "RPC, TVMax",
+
+      // UEFA (Europa)
+      "Spain": "RTVE, Movistar Plus+",
+      "Germany": "ARD, ZDF, MagentaTV",
+      "United Kingdom": "BBC, ITV",
+      "France": "TF1, beIN Sports",
+      "Italy": "RAI, Sky Sport",
+      "Portugal": "RTP, SIC, Sport TV",
+      "Netherlands": "NOS",
+      "Belgium": "VRT, Sporza",
+      "Switzerland": "SRG SSR",
+      "Croatia": "HRT",
+
+      // AFC (Asia) & CAF (África)
+      "Japan": "NHK, Fuji TV, ABEMA",
+      "South Korea": "KBS, MBC, SBS",
+      "Australia": "SBS, Optus Sport",
+      "Morocco": "SNRT, Arryadia, beIN Sports",
+      "Senegal": "RTS, New World TV",
+      "Cameroon": "CRTV, New World TV",
+      "Saudi Arabia": "beIN Sports",
+      "Qatar": "beIN Sports",
+      "Turkey": "TRT 1",
+
+      // RESTO DEL MUNDO (Fallback inteligente)
+      "default": "FIFA+ / ESPN Global / DSports Internacional"
+    };
+
+    // 3. BASE DE DATOS DE LOS PARTIDOS
     const broadcastData = [
-      { date: '2026-06-11T15:00:00-06:00', match: 'México vs. Por Definir', info: 'Inauguración (Grupo A)', tv: 'TV Azteca, TUDN, DSports' },
-      { date: '2026-06-12T16:00:00-04:00', match: 'Estados Unidos vs. Paraguay', info: 'Fase de Grupos (Grupo D)', tv: 'Telefuturo, SNT, Tigo Sports, Fox' },
-      { date: '2026-06-12T13:00:00-04:00', match: 'Australia vs. Turquía', info: 'Fase de Grupos (Grupo D)', tv: 'DSports, Fox Sports' },
-      { date: '2026-06-16T22:00:00-04:00', match: 'Argentina vs. Argelia', info: 'Fase de Grupos (Grupo J)', tv: 'TyC Sports, TV Pública, Telefe' },
-      { date: '2026-06-20T00:00:00-04:00', match: 'Turquía vs. Paraguay', info: 'Fase de Grupos (Grupo D)', tv: 'Telefuturo, SNT, Tigo Sports, DSports' },
-      { date: '2026-06-22T02:00:00-04:00', match: 'Argentina vs. Austria', info: 'Fase de Grupos (Grupo J)', tv: 'TyC Sports, TV Pública, Telefe' }
+      { date: '2026-06-11T15:00:00-06:00', match: 'México vs. Por Definir', info: 'Inauguración (Grupo A)' },
+      { date: '2026-06-12T16:00:00-04:00', match: 'Estados Unidos vs. Paraguay', info: 'Fase de Grupos (Grupo D)' },
+      { date: '2026-06-12T13:00:00-04:00', match: 'Australia vs. Turquía', info: 'Fase de Grupos (Grupo D)' },
+      { date: '2026-06-16T22:00:00-04:00', match: 'Argentina vs. Argelia', info: 'Fase de Grupos (Grupo J)' },
+      { date: '2026-06-20T00:00:00-04:00', match: 'Turquía vs. Paraguay', info: 'Fase de Grupos (Grupo D)' },
+      { date: '2026-06-22T02:00:00-04:00', match: 'Argentina vs. Austria', info: 'Fase de Grupos (Grupo J)' }
     ];
 
-    // 3. MAGIA DE GEOLOCALIZACIÓN Y HORA
+    // 4. MAGIA DE GEOLOCALIZACIÓN, CANALES Y HORA
     async function initTVGuide() {
-      // Intentar obtener país para el mensaje amigable
+      let paisUsuario = 'default';
+      
       try {
         const res = await fetch('https://ipapi.co/json/');
         const data = await res.json();
-        document.getElementById('loc-text').innerText = data.country_name || 'tu país';
+        
+        // Detectamos el país (viene en inglés)
+        const detectedCountry = data.country_name;
+        document.getElementById('loc-text').innerText = detectedCountry || 'tu país';
+        
+        // Si el país detectado está en nuestro diccionario, lo usamos
+        if(derechosTV[detectedCountry]) {
+            paisUsuario = detectedCountry;
+        }
       } catch (e) {
         document.getElementById('loc-text').innerText = 'tu zona';
       }
 
-      // Renderizar tabla con la zona horaria del dispositivo del usuario
-      const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      // El código decide qué canal mostrarle a la persona
+      const canalesLocales = derechosTV[paisUsuario];
       const tbody = document.getElementById('tv-guide-body');
       
       broadcastData.forEach(game => {
         const d = new Date(game.date);
-        
-        // Formatear Fecha (Ej: Jueves, 11 de Jun)
         const localDate = d.toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
-        
-        // Formatear Hora Exacta
         const localTime = d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: false });
 
         tbody.innerHTML += `
@@ -200,7 +253,7 @@
               <span style="font-size: 12px; color: var(--muted);">${game.info}</span>
             </td>
             <td><span class="time-badge">${localTime}</span></td>
-            <td class="tv-channel">📺 ${game.tv}</td>
+            <td class="tv-channel">📺 ${canalesLocales}</td>
           </tr>
         `;
       });
