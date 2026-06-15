@@ -6,7 +6,7 @@
   <title>Mundial 2026 EN VIVO — Dónde Ver, Horarios y Resultados</title>
 
   <meta name="description" content="Guía de transmisión del Mundial 2026. Entérate en qué canales ver los partidos, horarios adaptados a tu país y sigue los resultados en tiempo real." />
-  <meta name="keywords" content="mundial 2026, donde ver mundial, canales mundial 2026, resultados en vivo mundial, paraguay mundial, argentina mundial" />
+  <meta name="keywords" content="mundial 2026, donde ver mundial, canales mundial 2026, resultados en vivo mundial, calendario oficial" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,7 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* TOKENS DE DISEÑO (Estilo Claude Premium) */
     :root {
       --bg:       #080C17;
       --surface:  #0F1623;
@@ -35,7 +34,6 @@
     body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.6; }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
 
-    /* HEADER */
     header { background: rgba(8,12,23,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 15px 0; }
     nav { display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-num); font-size: 24px; color: #fff; text-decoration: none; }
@@ -43,17 +41,14 @@
     .btn-share { background: linear-gradient(135deg, var(--accent1), var(--accent2)); border: none; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; }
     .btn-share:hover { opacity: 0.85; }
 
-    /* HERO SECTION */
     .hero { background: linear-gradient(180deg, #0A1628 0%, var(--bg) 100%); padding: 40px 0; text-align: center; }
     .hero-label { font-size: 12px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
     .hero-title { font-family: var(--font-num); font-size: clamp(32px, 6vw, 64px); line-height: 1; color: #fff; margin-bottom: 20px; }
     .hero-title span { background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-    /* LOCATION BAR */
     .location-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 0; text-align: center; font-size: 13px; color: var(--muted); }
     .location-bar strong { color: var(--text); }
 
-    /* MAIN CONTENT */
     main { padding: 30px 0 60px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
     .card-header { padding: 16px 20px; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
@@ -62,19 +57,21 @@
     .live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); animation: pulse 1.5s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.7); } 70% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } }
 
-    /* TABLA DE HORARIOS */
-    .table-responsive { overflow-x: auto; }
+    .table-responsive { overflow-x: auto; max-height: 600px; overflow-y: auto; }
     table { width: 100%; border-collapse: collapse; min-width: 600px; text-align: left; }
-    th { background: rgba(255,255,255,0.02); color: var(--muted); font-size: 12px; text-transform: uppercase; padding: 12px 20px; font-weight: 600; letter-spacing: 1px; }
+    th { background: #0F1623; color: var(--muted); font-size: 12px; text-transform: uppercase; padding: 12px 20px; font-weight: 600; letter-spacing: 1px; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid var(--border); }
     td { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 14px; }
     tr:hover td { background: rgba(255,255,255,0.01); }
     .time-badge { background: rgba(37,99,235,0.2); color: #60A5FA; border: 1px solid rgba(37,99,235,0.3); padding: 4px 10px; border-radius: 6px; font-weight: 700; font-family: var(--font-num); font-size: 16px; letter-spacing: 1px; }
     .tv-channel { font-weight: 600; color: var(--gold); }
 
-    /* ANUNCIOS */
     .ad-container { text-align: center; margin: 25px 0; padding: 10px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius); }
     
     footer { text-align: center; padding: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+    
+    .table-responsive::-webkit-scrollbar { width: 8px; height: 8px; }
+    .table-responsive::-webkit-scrollbar-track { background: var(--surface); }
+    .table-responsive::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 4px; }
   </style>
 </head>
 <body>
@@ -119,16 +116,16 @@
 
     <div class="card">
       <div class="card-header" style="background: rgba(37,99,235,0.1);">
-        <h2>📺 GUÍA DE TRANSMISIÓN: DÓNDE VER LOS PARTIDOS</h2>
+        <h2>📺 GUÍA DE TRANSMISIÓN: CALENDARIO COMPLETO</h2>
       </div>
       <div class="table-responsive">
         <table>
           <thead>
             <tr>
               <th>Fecha del Partido</th>
-              <th>Encuentro / Grupo</th>
+              <th>Encuentro / Detalles</th>
               <th>Tu Hora Local</th>
-              <th>Canales de Transmisión</th>
+              <th>Canales Oficiales</th>
             </tr>
           </thead>
           <tbody id="tv-guide-body">
@@ -141,11 +138,10 @@
   </main>
 
   <footer>
-    <p>⚽ Hub Mundial 2026 — Horarios adaptados dinámicamente a la zona horaria del usuario.</p>
+    <p>⚽ Hub Mundial 2026 — Horarios extraídos de la FIFA y adaptados dinámicamente a la zona horaria del usuario.</p>
   </footer>
 
   <script>
-    // 1. COMPARTIR WEB NATIVO
     function compartirWeb() {
       if (navigator.share) {
         navigator.share({
@@ -158,9 +154,7 @@
       }
     }
 
-    // 2. EL MEGA-DICCIONARIO GLOBAL DE DERECHOS TV
     const derechosTV = {
-      // CONMEBOL (Sudamérica)
       "Paraguay": "Telefuturo, SNT, Trece, Tigo Sports",
       "Argentina": "TyC Sports, TV Pública, DSports",
       "Brazil": "TV Globo, SporTV, CazéTV",
@@ -171,52 +165,108 @@
       "Ecuador": "Teleamazonas, El Canal del Fútbol",
       "Bolivia": "Unitel, Red Uno, Tigo Sports",
       "Venezuela": "Televen, DSports",
-
-      // CONCACAF (Norte/Centroamérica)
       "Mexico": "TV Azteca, Canal 5, TUDN, Vix",
       "United States": "FOX, FS1, Telemundo, Peacock",
       "Canada": "TSN, RDS, CTV",
-      "Costa Rica": "Teletica, Repretel",
-      "Panama": "RPC, TVMax",
-
-      // UEFA (Europa)
       "Spain": "RTVE, Movistar Plus+",
       "Germany": "ARD, ZDF, MagentaTV",
       "United Kingdom": "BBC, ITV",
       "France": "TF1, beIN Sports",
       "Italy": "RAI, Sky Sport",
-      "Portugal": "RTP, SIC, Sport TV",
-      "Netherlands": "NOS",
-      "Belgium": "VRT, Sporza",
-      "Switzerland": "SRG SSR",
-      "Croatia": "HRT",
-
-      // AFC (Asia) & CAF (África)
       "Japan": "NHK, Fuji TV, ABEMA",
-      "South Korea": "KBS, MBC, SBS",
-      "Australia": "SBS, Optus Sport",
       "Morocco": "SNRT, Arryadia, beIN Sports",
-      "Senegal": "RTS, New World TV",
-      "Cameroon": "CRTV, New World TV",
-      "Saudi Arabia": "beIN Sports",
-      "Qatar": "beIN Sports",
-      "Turkey": "TRT 1",
-
-      // RESTO DEL MUNDO (Fallback inteligente)
       "default": "FIFA+ / ESPN Global / DSports Internacional"
     };
 
-    // 3. BASE DE DATOS DE LOS PARTIDOS
+    // CALENDARIO REAL EXTRAÍDO DE FIFA - Todo estandarizado a UTC-4 (Horario del Este)
     const broadcastData = [
-      { date: '2026-06-11T15:00:00-06:00', match: 'México vs. Por Definir', info: 'Inauguración (Grupo A)' },
-      { date: '2026-06-12T16:00:00-04:00', match: 'Estados Unidos vs. Paraguay', info: 'Fase de Grupos (Grupo D)' },
-      { date: '2026-06-12T13:00:00-04:00', match: 'Australia vs. Turquía', info: 'Fase de Grupos (Grupo D)' },
-      { date: '2026-06-16T22:00:00-04:00', match: 'Argentina vs. Argelia', info: 'Fase de Grupos (Grupo J)' },
-      { date: '2026-06-20T00:00:00-04:00', match: 'Turquía vs. Paraguay', info: 'Fase de Grupos (Grupo D)' },
-      { date: '2026-06-22T02:00:00-04:00', match: 'Argentina vs. Austria', info: 'Fase de Grupos (Grupo J)' }
+      // 15 de Junio
+      { date: '2026-06-15T12:00:00-04:00', match: 'España vs. Cabo Verde', info: 'Grupo H - Estadio Atlanta' },
+      { date: '2026-06-15T15:00:00-04:00', match: 'Bélgica vs. Egipto', info: 'Grupo G - Estadio Seattle' },
+      { date: '2026-06-15T18:00:00-04:00', match: 'Arabia Saudí vs. Uruguay', info: 'Grupo H - Estadio Miami' },
+      { date: '2026-06-15T21:00:00-04:00', match: 'RI de Irán vs. Nueva Zelanda', info: 'Grupo G - Estadio Los Ángeles' },
+      
+      // 16 de Junio
+      { date: '2026-06-16T15:00:00-04:00', match: 'Francia vs. Senegal', info: 'Grupo I - Estadio Nueva York/Nueva Jersey' },
+      { date: '2026-06-16T18:00:00-04:00', match: 'Irak vs. Noruega', info: 'Grupo I - Estadio Boston' },
+      { date: '2026-06-16T21:00:00-04:00', match: 'Argentina vs. Argelia', info: 'Grupo J - Estadio Kansas City' },
+      { date: '2026-06-17T00:00:00-04:00', match: 'Austria vs. Jordania', info: 'Grupo J - Bahía de San Francisco' }, // Aparece a las 00:00, técnicamente día 17
+
+      // 17 de Junio
+      { date: '2026-06-17T13:00:00-04:00', match: 'Portugal vs. RD Congo', info: 'Grupo K - Estadio Houston' },
+      { date: '2026-06-17T16:00:00-04:00', match: 'Inglaterra vs. Croacia', info: 'Grupo L - Estadio Dallas' },
+      { date: '2026-06-17T19:00:00-04:00', match: 'Ghana vs. Panamá', info: 'Grupo L - Estadio Toronto' },
+      { date: '2026-06-17T22:00:00-04:00', match: 'Uzbekistán vs. Colombia', info: 'Grupo K - Estadio Ciudad de México' },
+
+      // 18 de Junio
+      { date: '2026-06-18T12:00:00-04:00', match: 'República Checa vs. Sudáfrica', info: 'Grupo A - Estadio Atlanta' },
+      { date: '2026-06-18T15:00:00-04:00', match: 'Suiza vs. Bosnia y Herzegovina', info: 'Grupo B - Estadio Los Ángeles' },
+      { date: '2026-06-18T18:00:00-04:00', match: 'Canadá vs. Catar', info: 'Grupo B - Estadio BC Place Vancouver' },
+      { date: '2026-06-18T21:00:00-04:00', match: 'México vs. República de Corea', info: 'Grupo A - Estadio Guadalajara' },
+
+      // 19 de Junio
+      { date: '2026-06-19T15:00:00-04:00', match: 'Estados Unidos vs. Australia', info: 'Grupo D - Estadio Seattle' },
+      { date: '2026-06-19T18:00:00-04:00', match: 'Escocia vs. Marruecos', info: 'Grupo C - Estadio Boston' },
+      { date: '2026-06-19T21:00:00-04:00', match: 'Brasil vs. Haití', info: 'Grupo C - Estadio Filadelfia' },
+      { date: '2026-06-20T00:00:00-04:00', match: 'Turquía vs. Paraguay', info: 'Grupo D - Bahía de San Francisco' },
+
+      // 20 de Junio
+      { date: '2026-06-20T13:00:00-04:00', match: 'Países Bajos vs. Suecia', info: 'Grupo F - Estadio Houston' },
+      { date: '2026-06-20T16:00:00-04:00', match: 'Alemania vs. Costa de Marfil', info: 'Grupo E - Estadio Toronto' },
+      { date: '2026-06-20T22:00:00-04:00', match: 'Ecuador vs. Curazao', info: 'Grupo E - Estadio Kansas City' },
+      { date: '2026-06-21T00:00:00-04:00', match: 'Túnez vs. Japón', info: 'Grupo F - Estadio Monterrey' },
+
+      // 21 de Junio
+      { date: '2026-06-21T12:00:00-04:00', match: 'España vs. Arabia Saudí', info: 'Grupo H - Estadio Atlanta' },
+      { date: '2026-06-21T15:00:00-04:00', match: 'Bélgica vs. Irán', info: 'Grupo G - Estadio Los Ángeles' },
+      { date: '2026-06-21T18:00:00-04:00', match: 'Uruguay vs. Cabo Verde', info: 'Grupo H - Estadio Miami' },
+      { date: '2026-06-21T21:00:00-04:00', match: 'Nueva Zelanda vs. Egipto', info: 'Grupo G - Estadio BC Place Vancouver' },
+
+      // 22 de Junio
+      { date: '2026-06-22T13:00:00-04:00', match: 'Argentina vs. Austria', info: 'Grupo J - Estadio Dallas' },
+      { date: '2026-06-22T17:00:00-04:00', match: 'Francia vs. Irak', info: 'Grupo I - Estadio Filadelfia' },
+      { date: '2026-06-22T20:00:00-04:00', match: 'Noruega vs. Senegal', info: 'Grupo I - Estadio Nueva York/Nueva Jersey' },
+      { date: '2026-06-22T23:00:00-04:00', match: 'Jordania vs. Argelia', info: 'Grupo J - Bahía de San Francisco' },
+
+      // 23 de Junio
+      { date: '2026-06-23T13:00:00-04:00', match: 'Portugal vs. Uzbekistán', info: 'Grupo K - Estadio Houston' },
+      { date: '2026-06-23T16:00:00-04:00', match: 'Inglaterra vs. Ghana', info: 'Grupo L - Estadio Boston' },
+      { date: '2026-06-23T19:00:00-04:00', match: 'Panamá vs. Croacia', info: 'Grupo L - Estadio Toronto' },
+      { date: '2026-06-23T22:00:00-04:00', match: 'Colombia vs. RD Congo', info: 'Grupo K - Estadio Guadalajara' },
+
+      // 24 de Junio
+      { date: '2026-06-24T15:00:00-04:00', match: 'Suiza vs. Canadá', info: 'Grupo B - Vancouver' },
+      { date: '2026-06-24T15:00:00-04:00', match: 'Bosnia y Herzegovina vs. Catar', info: 'Grupo B - Seattle' },
+      { date: '2026-06-24T18:00:00-04:00', match: 'Escocia vs. Brasil', info: 'Grupo C - Miami' },
+      { date: '2026-06-24T18:00:00-04:00', match: 'Marruecos vs. Haití', info: 'Grupo C - Atlanta' },
+      { date: '2026-06-24T21:00:00-04:00', match: 'República Checa vs. México', info: 'Grupo A - Ciudad de México' },
+      { date: '2026-06-24T21:00:00-04:00', match: 'Sudáfrica vs. República de Corea', info: 'Grupo A - Monterrey' },
+
+      // 25 de Junio
+      { date: '2026-06-25T16:00:00-04:00', match: 'Curazao vs. Costa de Marfil', info: 'Grupo E - Filadelfia' },
+      { date: '2026-06-25T16:00:00-04:00', match: 'Ecuador vs. Alemania', info: 'Grupo E - Nueva York/Nueva Jersey' },
+      { date: '2026-06-25T19:00:00-04:00', match: 'Japón vs. Suecia', info: 'Grupo F - Dallas' },
+      { date: '2026-06-25T19:00:00-04:00', match: 'Túnez vs. Países Bajos', info: 'Grupo F - Kansas City' },
+      { date: '2026-06-25T22:00:00-04:00', match: 'Turquía vs. Estados Unidos', info: 'Grupo D - Los Ángeles' },
+      { date: '2026-06-25T22:00:00-04:00', match: 'Paraguay vs. Australia', info: 'Grupo D - Bahía de San Francisco' },
+
+      // 26 de Junio
+      { date: '2026-06-26T15:00:00-04:00', match: 'Noruega vs. Francia', info: 'Grupo I - Boston' },
+      { date: '2026-06-26T15:00:00-04:00', match: 'Senegal vs. Irak', info: 'Grupo I - Toronto' },
+      { date: '2026-06-26T20:00:00-04:00', match: 'Cabo Verde vs. Arabia Saudí', info: 'Grupo H - Houston' },
+      { date: '2026-06-26T20:00:00-04:00', match: 'Uruguay vs. España', info: 'Grupo H - Guadalajara' },
+      { date: '2026-06-26T23:00:00-04:00', match: 'Egipto vs. Irán', info: 'Grupo G - Seattle' },
+      { date: '2026-06-26T23:00:00-04:00', match: 'Nueva Zelanda vs. Bélgica', info: 'Grupo G - Vancouver' },
+
+      // 27 de Junio
+      { date: '2026-06-27T17:00:00-04:00', match: 'Panamá vs. Inglaterra', info: 'Grupo L - Nueva York/Nueva Jersey' },
+      { date: '2026-06-27T17:00:00-04:00', match: 'Croacia vs. Ghana', info: 'Grupo L - Filadelfia' },
+      { date: '2026-06-27T19:30:00-04:00', match: 'Colombia vs. Portugal', info: 'Grupo K - Miami' },
+      { date: '2026-06-27T19:30:00-04:00', match: 'RD Congo vs. Uzbekistán', info: 'Grupo K - Atlanta' },
+      { date: '2026-06-27T22:00:00-04:00', match: 'Argelia vs. Austria', info: 'Grupo J - Kansas City' },
+      { date: '2026-06-27T22:00:00-04:00', match: 'Jordania vs. Argentina', info: 'Grupo J - Dallas' }
     ];
 
-    // 4. MAGIA DE GEOLOCALIZACIÓN, CANALES Y HORA
     async function initTVGuide() {
       let paisUsuario = 'default';
       
@@ -224,11 +274,9 @@
         const res = await fetch('https://ipapi.co/json/');
         const data = await res.json();
         
-        // Detectamos el país (viene en inglés)
         const detectedCountry = data.country_name;
         document.getElementById('loc-text').innerText = detectedCountry || 'tu país';
         
-        // Si el país detectado está en nuestro diccionario, lo usamos
         if(derechosTV[detectedCountry]) {
             paisUsuario = detectedCountry;
         }
@@ -236,7 +284,6 @@
         document.getElementById('loc-text').innerText = 'tu zona';
       }
 
-      // El código decide qué canal mostrarle a la persona
       const canalesLocales = derechosTV[paisUsuario];
       const tbody = document.getElementById('tv-guide-body');
       
@@ -249,7 +296,7 @@
           <tr>
             <td style="color: var(--muted);">${localDate}</td>
             <td>
-              <strong style="color: #fff; display:block;">${game.match}</strong>
+              <strong style="color: #fff; display:block; font-size: 16px;">${game.match}</strong>
               <span style="font-size: 12px; color: var(--muted);">${game.info}</span>
             </td>
             <td><span class="time-badge">${localTime}</span></td>
@@ -259,7 +306,6 @@
       });
     }
 
-    // Arrancar
     window.onload = initTVGuide;
   </script>
 
